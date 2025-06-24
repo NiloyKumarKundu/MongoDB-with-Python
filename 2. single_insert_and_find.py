@@ -1,3 +1,4 @@
+from typing import TypedDict
 from pymongo import MongoClient
 
 client = MongoClient("localhost", 27017)
@@ -20,3 +21,14 @@ if find_result:
     print("Found document:", find_result)
 else:
     print("No document found with the specified criteria.")
+    
+    
+    
+class Person(TypedDict):
+    name: str
+    age: int 
+    
+    
+collection.insert_one(Person(name="Niloy", age=40))
+
+print(f"find: {collection.find_one({'name': 'Niloy'})}")
